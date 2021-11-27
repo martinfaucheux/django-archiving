@@ -23,7 +23,7 @@ jobs:
       with:
         python-version: ${{ matrix.python_version }}
     - name: Install pipenv
-        uses: dschep/install-pipenv-action@v1
+      uses: dschep/install-pipenv-action@v1
     - name: Test Django
       run: |
         python -W error::DeprecationWarning -W error::PendingDeprecationWarning \
