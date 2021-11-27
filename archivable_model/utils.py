@@ -13,8 +13,7 @@ def is_safedelete_cls(cls):
         # This used to check if it startswith 'safedelete', but that masks
         # the issue inside of a test. Other clients create models that are
         # outside of the safedelete package.
-        # TODO: change this condition
-        if base.__module__.startswith("libraries.archivable_model.models"):
+        if base.__module__.startswith("django_archiving.models"):
             return True
         if is_safedelete_cls(base):
             return True
