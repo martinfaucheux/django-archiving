@@ -27,4 +27,4 @@ jobs:
     - name: Test Django
       run: |
         python -W error::DeprecationWarning -W error::PendingDeprecationWarning \
-           `which django-admin` test archivable_model --settings=archivable_model.tests.settings
+           manage.py test archivable_model --settings=archivable_model.tests.settings
