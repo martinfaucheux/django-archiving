@@ -8,14 +8,14 @@ from django.utils import timezone
 from . import signals
 
 
-def is_safedelete_cls(cls):
+def is_archivable_cls(cls):
     for base in cls.__bases__:
-        # This used to check if it startswith 'safedelete', but that masks
+        # This used to check if it startswith 'archivable_model', but that masks
         # the issue inside of a test. Other clients create models that are
-        # outside of the safedelete package.
-        if base.__module__.startswith("django_archiving.models"):
+        # outside of the archivable_model package.
+        if base.__module__.startswith("archivable_model.models"):
             return True
-        if is_safedelete_cls(base):
+        if is_archivable_cls(base):
             return True
     return False
 
@@ -60,7 +60,7 @@ def archive_collector(collector):
         # delete instances
         for model, instances in collector.data.items():
 
-            if not is_safedelete_cls(model):
+            if not is_archivable_cls(model):
                 continue
 
             pk_list = [obj.pk for obj in instances]
@@ -115,7 +115,7 @@ def unarchive_collector(collector):
         # delete instances
         for model, instances in collector.data.items():
 
-            if not is_safedelete_cls(model):
+            if not is_archivable_cls(model):
                 continue
 
             pk_list = [obj.pk for obj in instances]
