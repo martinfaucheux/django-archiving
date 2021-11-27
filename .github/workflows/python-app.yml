@@ -27,6 +27,6 @@ jobs:
     - name: Test Django
       run: |
         pipenv install --dev
-        pipenv shell
-        python -W error::DeprecationWarning -W error::PendingDeprecationWarning \
-           manage.py test archivable_model --settings=archivable_model.tests.settings
+        pipenv run \
+          python -W error::DeprecationWarning -W error::PendingDeprecationWarning \
+          manage.py test archivable_model --settings=archivable_model.tests.settings
