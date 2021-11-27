@@ -24,9 +24,8 @@ jobs:
         python-version: ${{ matrix.python_version }}
     - name: Install pipenv
       uses: dschep/install-pipenv-action@v1
-    - name: Install dependencies
-      run: pipenv install --dev
     - name: Test Django
       run: |
+        pipenv install --dev
         python -W error::DeprecationWarning -W error::PendingDeprecationWarning \
            manage.py test archivable_model --settings=archivable_model.tests.settings
