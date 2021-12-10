@@ -1,5 +1,3 @@
-from unittest.result import TestResult
-
 from django.test import TestCase
 
 
